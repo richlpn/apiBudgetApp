@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-o&t7n+(nbhp()$^#au!p^@r2yrh$-wk+lsvk5(=kviq$j*p&4g
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.localhost','127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -139,8 +139,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
