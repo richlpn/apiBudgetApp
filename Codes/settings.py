@@ -4,9 +4,9 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o&t7n+(nbhp()$^#au!p^@r2yrh$-wk+lsvk5(=kviq$j*p&4g'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["rich-contas-api.herokuapp.com","127.0.0.1"]
+ALLOWED_HOSTS = ["rich-contas-api.herokuapp.com","127.0.0.1", "localhost"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'Bills.apps.BillsConfig',
-    'corsheaders'
+    'corsheaders',
+    'CustomUser',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,7 @@ SIMPLE_JWT = {
 
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',
+    'USER_ID_FIELD': 'uuid',
     'USER_ID_CLAIM': 'user_id',
     'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
 
@@ -139,8 +140,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
-# CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+
+AUTH_USER_MODEL = 'CustomUser.Users'

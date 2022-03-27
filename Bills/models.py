@@ -1,10 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from CustomUser.models import Users
 
 
 # Create your models here.
 class BillModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
     tittle = models.CharField(max_length=60)
     description = models.CharField(max_length=200, blank=True)
     value = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
