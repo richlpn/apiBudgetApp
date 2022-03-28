@@ -17,7 +17,7 @@ class BillView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        request.data['user'] = request.user.id
+        request.data['user'] = request.user.uuid
         bill = self.class_serializer(data=request.data)
         if bill.is_valid():
             bill.save()
